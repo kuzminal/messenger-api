@@ -14,6 +14,9 @@ import javax.validation.constraints.Pattern;
 class User {
     @Column(unique = true)
     @Size(min = 2)
+    var userName: String = ""
+    @Size(min = 8, max = 15)
+    @Column(unique = true)
     @Pattern(regexp = "^\\(?(\\d{3})\\)?[-]?(\\d{3})[-]?(\\d{4})$")
     var phoneNumber: String = ""
     @Size(min = 60, max = 60)
