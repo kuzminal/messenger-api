@@ -5,9 +5,8 @@ import com.kuzmin.app.messenger.api.heplers.objects.UserListVO
 import com.kuzmin.app.messenger.api.heplers.objects.UserVO
 import com.kuzmin.app.messenger.api.models.User
 import com.kuzmin.app.messenger.api.repositories.UserRepository
-import com.kuzmin.app.messenger.api.services.TokenAuthenticationService
-import com.kuzmin.app.messenger.api.services.UserService
 import com.kuzmin.app.messenger.api.services.UserServiceImpl
+import io.swagger.annotations.Api
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
@@ -15,6 +14,7 @@ import javax.servlet.http.HttpServletRequest
 
 @RestController
 @RequestMapping("/users")
+@Api(description = "Пользователи")
 class UserController(val userService: UserServiceImpl,
                      val userAssembler: UserAssembler,
                      val userRepository: UserRepository) {
@@ -54,6 +54,6 @@ class UserController(val userService: UserServiceImpl,
     request: HttpServletRequest): ResponseEntity<UserVO> {
         val currentUser = userRepository.findByUserName(request.userPrincipal.name)
         userService.updateUserStatus(currentUser as User, updateDetails)
-        return ResponseEntity.ok(userAssembler.toUserVO(currentUser!!))
+        return ResponseEntity.ok(userAssembler.toUserVO(currentUser))
     }
 }

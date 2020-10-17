@@ -6,12 +6,14 @@ import com.kuzmin.app.messenger.api.models.User
 import com.kuzmin.app.messenger.api.repositories.UserRepository
 import com.kuzmin.app.messenger.api.services.MessageService
 import com.kuzmin.app.messenger.api.services.MessageServiceImpl
+import io.swagger.annotations.Api
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import javax.servlet.http.HttpServletRequest
 
 @RestController
 @RequestMapping("/messages")
+@Api(description = "Сообщения")
 class MessageController(val messageService: MessageServiceImpl,
                         val userRepository: UserRepository,
                         val messageAssembler: MessageAssembler) {

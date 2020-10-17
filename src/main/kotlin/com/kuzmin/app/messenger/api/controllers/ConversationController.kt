@@ -6,6 +6,7 @@ import com.kuzmin.app.messenger.api.heplers.objects.ConversationVO
 import com.kuzmin.app.messenger.api.models.User
 import com.kuzmin.app.messenger.api.repositories.UserRepository
 import com.kuzmin.app.messenger.api.services.ConversationServiceImpl
+import io.swagger.annotations.Api
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletRequest
 
 @RestController
 @RequestMapping("/conversations")
+@Api(description = "Чаты")
 class ConversationController(val conversationService: ConversationServiceImpl,
                             val conversationAssembler: ConversationAssembler,
                             val userRepository: UserRepository) {

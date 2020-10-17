@@ -15,7 +15,8 @@ class SwaggerConfiguration {
     @Bean
     open fun api(): Docket = Docket(DocumentationType.SWAGGER_2)
             .select()
-            .apis(RequestHandlerSelectors.any())
+            //.apis(RequestHandlerSelectors.any())
+            .apis(RequestHandlerSelectors.basePackage("com.kuzmin.app.messenger.api.controllers"))
             .paths(PathSelectors.any())
             .build()
 }
