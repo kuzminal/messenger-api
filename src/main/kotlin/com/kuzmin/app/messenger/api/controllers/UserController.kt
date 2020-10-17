@@ -7,6 +7,7 @@ import com.kuzmin.app.messenger.api.models.User
 import com.kuzmin.app.messenger.api.repositories.UserRepository
 import com.kuzmin.app.messenger.api.services.UserServiceImpl
 import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
@@ -21,6 +22,7 @@ class UserController(val userService: UserServiceImpl,
 
     @PostMapping
     @RequestMapping("/registrations")
+    @ApiOperation("Регистрация нового пользователя")
     fun create(@Validated @RequestBody userDetails: User) :
             ResponseEntity<UserVO> {
         val user = userService.attemptRegistration(userDetails)
