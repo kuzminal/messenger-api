@@ -6,18 +6,22 @@ import java.util.*
 import javax.persistence.*
 
 @Entity
-class Conversation {
+class Conversation(userA: User, userB: User) {
     @ManyToOne(optional = false)
     @JoinColumn(name = "sender_id", referencedColumnName = "id")
     var sender: User? = null
+
     @ManyToOne(optional = false)
     @JoinColumn(name = "recipient_id", referencedColumnName = "id")
     var recipient: User? = null
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long = 0
+
     @DateTimeFormat
     val createAt: Date = Date.from(Instant.now())
+
     @OneToMany(mappedBy = "conversation", targetEntity = Message::class)
     private var messages: Collection<Message>? = null
 }
