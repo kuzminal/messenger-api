@@ -28,7 +28,7 @@ class JWTLoginFilter(url: String, authManager: AuthenticationManager) :
                 .readValue(req.inputStream, AccountCredentials::class.java)
         return authenticationManager.authenticate(
                 UsernamePasswordAuthenticationToken(
-                        credentials.username,
+                        credentials.userName,
                         credentials.password,
                         emptyList()
                 )

@@ -4,7 +4,9 @@ import com.kuzmin.app.messenger.api.exceptions.ConversationIdInvalidException
 import com.kuzmin.app.messenger.api.models.Conversation
 import com.kuzmin.app.messenger.api.models.User
 import com.kuzmin.app.messenger.api.repositories.ConversationRepository
+import org.springframework.stereotype.Component
 
+@Component
 class ConversationServiceImpl(val repository: ConversationRepository) : ConversationService {
     override fun createConversation(userA: User, userB: User): Conversation {
         val conversation = Conversation(userA, userB)

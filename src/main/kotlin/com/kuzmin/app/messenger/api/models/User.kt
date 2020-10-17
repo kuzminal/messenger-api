@@ -23,7 +23,6 @@ class User {
 
     @Size(min = 60, max = 60)
     var password: String = ""
-    var status: String = ""
 
     @Pattern(regexp = "\\A(activated|deactivated)\\z")
     var accountState: String = "activated"
@@ -33,7 +32,7 @@ class User {
     var id: Long = 0
 
     @DateTimeFormat
-    var createAt: Date = Date.from(Instant.now())
+    var createdAt: Date = Date.from(Instant.now())
 
     @OneToMany(mappedBy = "sender", targetEntity = Message::class)
     private var sentMessages: Collection<Message>? = null

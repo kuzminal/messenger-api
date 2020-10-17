@@ -5,7 +5,9 @@ import com.kuzmin.app.messenger.api.exceptions.UserNameUnavailableException
 import com.kuzmin.app.messenger.api.exceptions.UserStatusEmptyException
 import com.kuzmin.app.messenger.api.models.User
 import com.kuzmin.app.messenger.api.repositories.UserRepository
+import org.springframework.stereotype.Component
 
+@Component
 class UserServiceImpl(val repository: UserRepository) : UserService {
     @Throws(UserNameUnavailableException::class)
     override fun attemptRegistration(userDetails: User): User {
@@ -23,8 +25,8 @@ class UserServiceImpl(val repository: UserRepository) : UserService {
 
     @Throws(UserStatusEmptyException::class)
     fun updateUserStatus(currentUser: User, updateDetails: User): User {
-        if (!updateDetails.status.isEmpty()) {
-            currentUser.status = updateDetails.status
+        if (!updateDetails.accountState.isEmpty()) {
+            currentUser.accountState = updateDetails.accountState
             repository.save(currentUser)
             return currentUser
         }

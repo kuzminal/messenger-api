@@ -8,7 +8,9 @@ import com.kuzmin.app.messenger.api.models.User
 import com.kuzmin.app.messenger.api.repositories.ConversationRepository
 import com.kuzmin.app.messenger.api.repositories.MessageRepository
 import com.kuzmin.app.messenger.api.repositories.UserRepository
+import org.springframework.stereotype.Component
 
+@Component
 class MessageServiceImpl(val repository: MessageRepository,
                          val conversationRepository: ConversationRepository,
                          val conversationService: ConversationService,
